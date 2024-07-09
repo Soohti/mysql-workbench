@@ -498,10 +498,10 @@ def startODBCAdmin():
         # so if we're a 64bit WB, then we run the 64bit odbc tool (since we can't use 32bit drivers anyway)
 
         if sys.maxsize > 2**31:
-            subprocess.Popen(r"%SYSTEMROOT%\SysWOW64\odbcad32.exe", shell=True, creationflags=subprocess.CREATE_NEW_PROCESS_GROUP, close_fds=True)
-        else:
             subprocess.Popen(r"%SYSTEMROOT%\System32\odbcad32.exe", shell=True, creationflags=subprocess.CREATE_NEW_PROCESS_GROUP, close_fds=True)
-            return 1
+        else:
+            subprocess.Popen(r"%SYSTEMROOT%\SysWOW64\odbcad32.exe", shell=True, creationflags=subprocess.CREATE_NEW_PROCESS_GROUP, close_fds=True)
+        return 1
 
 
 def process_not_found_utils():
